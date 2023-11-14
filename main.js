@@ -4,13 +4,13 @@ import beauty from "./vendor/beautify";
 const codeMirror = CodeMirror.fromTextArea(document.querySelector("#code"), {
   lineNumbers: true,
   styleActiveLine: true,
-  matchBrackets: true
+  matchBrackets: true,
 });
 
 const nodeCode = CodeMirror.fromTextArea(document.querySelector("#node-code"), {
   lineNumbers: true,
   styleActiveLine: true,
-  matchBrackets: true
+  matchBrackets: true,
 });
 
 const doc = codeMirror.getDoc();
@@ -35,7 +35,7 @@ const doHighlight = () => {
       { line: current.start.line - 1, ch: current.start.column },
       { line: current.end.line - 1, ch: current.end.column },
       {
-        className: "highlight"
+        className: "highlight",
       }
     );
   }
@@ -56,7 +56,7 @@ const auto = () => {
 document.querySelector(".compile").addEventListener("click", () => {
   fetch("http://localhost:8080", {
     method: "POST",
-    body: codeMirror.getValue()
+    body: codeMirror.getValue(),
   })
     .then((res) => res.json())
     .then((data) => {
